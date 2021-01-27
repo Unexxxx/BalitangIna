@@ -1,14 +1,18 @@
 package org.chromium.chrome.browser.balitangina.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import org.chromium.chrome.browser.balitangina.R;
 import org.chromium.chrome.browser.balitangina.activity.MainActivity;
@@ -36,6 +40,9 @@ public class MainArticleAdapter extends
     @Override
     public void onBindViewHolder(MainArticleAdapter.ViewHolder viewHolder, int position) {
         final Article articleModel = articleArrayList.get(position);
+        if (!TextUtils.isEmpty(articleModel.getUrlToImage())) {
+            viewHolder.ivImage.setImageURI(Uri.parse(articleModel.getUrlToImage()));
+        }
         if (!TextUtils.isEmpty(articleModel.getTitle())) {
             viewHolder.titleText.setText(articleModel.getTitle());
         }
@@ -51,12 +58,16 @@ public class MainArticleAdapter extends
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+        private ImageView ivImage;
         private TextView titleText;
         private TextView descriptionText;
         private LinearLayout artilceAdapterParentLinear;
 
+
+
         ViewHolder(View view) {
             super(view);
+            ivImage = view.findViewById(R.id.iv_article_adapter_image);
             titleText = view.findViewById(R.id.article_adapter_tv_title);
             descriptionText = view.findViewById(R.id.article_adapter_tv_description);
             artilceAdapterParentLinear = view.findViewById(R.id.article_adapter_ll_parent);
