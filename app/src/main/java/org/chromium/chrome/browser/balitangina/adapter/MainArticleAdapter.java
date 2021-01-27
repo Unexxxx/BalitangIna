@@ -12,12 +12,14 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.squareup.picasso.Picasso;
 
 import org.chromium.chrome.browser.balitangina.R;
 import org.chromium.chrome.browser.balitangina.activity.MainActivity;
 import org.chromium.chrome.browser.balitangina.model.Article;
 
+import java.text.DateFormat;
 import java.util.List;
 
 public class MainArticleAdapter extends
@@ -41,18 +43,16 @@ public class MainArticleAdapter extends
     @Override
     public void onBindViewHolder(MainArticleAdapter.ViewHolder viewHolder, int position) {
         final Article articleModel = articleArrayList.get(position);
-//        if (!TextUtils.isEmpty(articleModel.getUrlToImage())) {
-//            viewHolder.ivImage.setImageURI(Uri.parse(articleModel.getUrlToImage()));
-//        }
-
         if (!TextUtils.isEmpty(articleModel.getTitle())) {
             viewHolder.titleText.setText(articleModel.getTitle());
         }
         if (!TextUtils.isEmpty(articleModel.getDescription())) {
             viewHolder.descriptionText.setText(articleModel.getDescription());
         }
-        Picasso.with(context).load(articleModel.getUrlToImage()).into(viewHolder.ivImage);
-
+        if (!TextUtils.isEmpty(articleModel.getPublishedAt())) {
+            viewHolder.publishAt.setText(articleModel.getPublishedAt());
+        }
+        Picasso.get().load(articleModel.getUrlToImage()).into(viewHolder.ivImage);
         viewHolder.artilceAdapterParentLinear.setTag(articleModel);
     }
 
@@ -65,6 +65,7 @@ public class MainArticleAdapter extends
         private ImageView ivImage;
         private TextView titleText;
         private TextView descriptionText;
+        private TextView publishAt;
         private LinearLayout artilceAdapterParentLinear;
 
 
@@ -74,6 +75,7 @@ public class MainArticleAdapter extends
             ivImage = view.findViewById(R.id.iv_article_adapter_image);
             titleText = view.findViewById(R.id.article_adapter_tv_title);
             descriptionText = view.findViewById(R.id.article_adapter_tv_description);
+            publishAt = view.findViewById(R.id.article_adapter_tv_publish);
             artilceAdapterParentLinear = view.findViewById(R.id.article_adapter_ll_parent);
             artilceAdapterParentLinear.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mainRecycler.setLayoutManager(linearLayoutManager);
         final APIInterface apiService = ApiClient.getClient().create(APIInterface.class);
-        Call<ResponseModel> call = apiService.getLatestNews("ph","entertainment" ,API_KEY);
+        Call<ResponseModel> call = apiService.getLatestNews("ph","technology" ,API_KEY);
         call.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(retrofit2.Call<ResponseModel> call, retrofit2.Response<ResponseModel> response) {
