@@ -21,7 +21,11 @@
         <ImageView
             android:id="@+id/iv_article_adapter_image"
             android:layout_width="match_parent"
+<<<<<<< HEAD
             android:layout_height="150dp"
+=======
+            android:layout_height="120dp"
+>>>>>>> 747aec7de36bc4d6e291b097d66867f383a3d83e
             android:scaleType="centerCrop"
             />
 
