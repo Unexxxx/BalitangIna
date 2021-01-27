@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.body().getStatus().equals("ok")) {
                     List<Article> articleList = response.body().getArticles();
                     if (articleList.size() > 0) {
-                        final MainArticleAdapter mainArticleAdapter = new MainArticleAdapter(articleList);
+                        final MainArticleAdapter mainArticleAdapter = new MainArticleAdapter(articleList, MainActivity.this);
                         mainArticleAdapter.setOnRecyclerViewItemClickListener(MainActivity.this);
                         mainRecycler.setAdapter(mainArticleAdapter);
                     }

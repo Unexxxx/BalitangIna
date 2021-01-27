@@ -17,7 +17,8 @@
         <ImageView
             android:id="@+id/iv_article_adapter_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="100dp"
+            />
 
         <TextView
             android:id="@+id/article_adapter_tv_title"

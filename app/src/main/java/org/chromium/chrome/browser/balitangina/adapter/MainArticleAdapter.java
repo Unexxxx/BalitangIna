@@ -27,8 +27,9 @@ public class MainArticleAdapter extends
     private Context context;
     private MainActivity onRecyclerViewItemClickListener;
 
-    public MainArticleAdapter(List<Article> articleArrayList) {
+    public MainArticleAdapter(List<Article> articleArrayList, Context context) {
         this.articleArrayList = articleArrayList;
+        this.context = context;
     }
 
     @Override
@@ -40,15 +41,18 @@ public class MainArticleAdapter extends
     @Override
     public void onBindViewHolder(MainArticleAdapter.ViewHolder viewHolder, int position) {
         final Article articleModel = articleArrayList.get(position);
-        if (!TextUtils.isEmpty(articleModel.getUrlToImage())) {
-            viewHolder.ivImage.setImageURI(Uri.parse(articleModel.getUrlToImage()));
-        }
+//        if (!TextUtils.isEmpty(articleModel.getUrlToImage())) {
+//            viewHolder.ivImage.setImageURI(Uri.parse(articleModel.getUrlToImage()));
+//        }
+
         if (!TextUtils.isEmpty(articleModel.getTitle())) {
             viewHolder.titleText.setText(articleModel.getTitle());
         }
         if (!TextUtils.isEmpty(articleModel.getDescription())) {
             viewHolder.descriptionText.setText(articleModel.getDescription());
         }
+        Picasso.with(context).load(articleModel.getUrlToImage()).into(viewHolder.ivImage);
+
         viewHolder.artilceAdapterParentLinear.setTag(articleModel);
     }
 
