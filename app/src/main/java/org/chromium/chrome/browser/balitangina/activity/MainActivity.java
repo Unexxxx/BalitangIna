@@ -1,5 +1,6 @@
 package org.chromium.chrome.browser.balitangina.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,7 +9,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.chromium.chrome.browser.balitangina.R;
 import org.chromium.chrome.browser.balitangina.adapter.MainArticleAdapter;
@@ -26,16 +31,21 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String API_KEY = "aa4f56b9ae2246f1a21df133b226c4bb";
 
+    BottomNavigationView bottomNavigation;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        bottomNavigation = findViewById(R.id.bottom_navigation);
+
         final RecyclerView mainRecycler = findViewById(R.id.activity_main_rv);
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mainRecycler.setLayoutManager(linearLayoutManager);
         final APIInterface apiService = ApiClient.getClient().create(APIInterface.class);
-        Call<ResponseModel> call = apiService.getLatestNews("ph","technology" ,API_KEY);
+        Call<ResponseModel> call = apiService.getLatestNews("ph", API_KEY);
         call.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(retrofit2.Call<ResponseModel> call, retrofit2.Response<ResponseModel> response) {
@@ -54,6 +64,26 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("out", t.toString());
             }
 
+        });
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_top_stories:
+                        Toast.makeText(MainActivity.this, "TOP STORIES", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.nav_news:
+                        Toast.makeText(MainActivity.this, "NEWS", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.nav_entertainment:
+                        Toast.makeText(MainActivity.this, "ENTERTAINMENT", Toast.LENGTH_SHORT).show();
+                        break;
+
+                }
+                return true;
+            }
         });
     }
 

@@ -3,6 +3,7 @@ package org.chromium.chrome.browser.balitangina.adapter;
 import android.content.Context;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,9 @@ import org.chromium.chrome.browser.balitangina.activity.MainActivity;
 import org.chromium.chrome.browser.balitangina.model.Article;
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class MainArticleAdapter extends
