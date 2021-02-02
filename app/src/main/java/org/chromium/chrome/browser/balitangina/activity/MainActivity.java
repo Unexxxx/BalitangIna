@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onFailure(retrofit2.Call<ResponseModel> call, Throwable t) {
                                 Log.e("out", t.toString());
-                            }
+                            }                                                            
 
                         });
                         return true;

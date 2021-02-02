@@ -9,6 +9,8 @@
     android:elevation="5dp"
     android:orientation="vertical">
 
+
+
     <LinearLayout
         android:id="@+id/article_adapter_ll_parent"
         android:layout_width="match_parent"
