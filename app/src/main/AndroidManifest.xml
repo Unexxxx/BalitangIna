@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BalitangIna">
-        <activity android:name=".activity.WebActivity"></activity>
+        <activity android:name=".bottomnavigationview.fragments.FragmentEntertainment"></activity>
+        <activity android:name=".bottomnavigationview.fragments.FragmentScience" />
+        <activity android:name=".bottomnavigationview.fragments.FragmentSports" />
+        <activity android:name=".bottomnavigationview.fragments.FragmentTechnology" />
+        <activity android:name=".activity.WebActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

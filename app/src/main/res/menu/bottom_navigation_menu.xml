@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/nav_top_stories"
         android:title="Top Stories" />
     <item
-        android:id="@+id/nav_news"
-        android:title="News" />
+        android:id="@+id/nav_tech"
+        android:title="Technology" />
+<!--    <item-->
+<!--        android:id="@+id/nav_sports"-->
+<!--        android:title="Sports" />-->
     <item
-        android:id="@+id/nav_entertainment"
-        android:title="Entertainment" />
+        android:id="@+id/nav_science"
+        android:title="Science" />
+<!--    <item-->
+<!--        android:id="@+id/nav_entertainment"-->
+<!--        android:title="Entertainment" />-->
 </menu>
